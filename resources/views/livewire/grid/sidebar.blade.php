@@ -134,12 +134,6 @@
         </li>
     </ul>
 </div>
-    
-<div class="toggle-off">
-    <button class="tg-btn-off"><i class="fa fa-bars"></i></button>
-</div>
-
-<script type="text/javascript" src="{{ asset('js/toggle.js') }}"></script>
 
 
 

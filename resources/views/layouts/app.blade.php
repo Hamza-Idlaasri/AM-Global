@@ -48,6 +48,7 @@
     </div>
 
     @livewireScripts
+    <script type="text/javascript" src="{{ asset('js/toggle.js') }}"></script>
 
     {{-- <script type="module">
         import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
