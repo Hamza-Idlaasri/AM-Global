@@ -30,7 +30,7 @@ class AddNewSite extends Controller
         // validation
         $this->validate($request,[
 
-            // 'db_connection' => 'required|max:255|unique:users.sites|regex:/^[a-zA-Z][a-zA-Z0-9-_(). ÀÂÇÉÈÊÎÔÛÙàâçéèêôûù]/',
+            'site_name' => 'required|max:255|unique:users.sites|regex:/^[a-zA-Z][a-zA-Z0-9-_(). ÀÂÇÉÈÊÎÔÛÙàâçéèêôûù]/',
             'db_host' => 'required|max:255|regex:/^[a-zA-Z0-9-_(). ÀÂÇÉÈÊÎÔÛÙàâçéèêôûù]/',
             'db_port' => 'required|max:255|regex:/^[a-zA-Z0-9-_(). ÀÂÇÉÈÊÎÔÛÙàâçéèêôûù]/',
             'db_database' => 'required|max:255|regex:/^[a-zA-Z][a-zA-Z0-9-_(). ÀÂÇÉÈÊÎÔÛÙàâçéèêôûù]/',
@@ -43,7 +43,7 @@ class AddNewSite extends Controller
         // Store Site
         Site::create([
 
-            // 'db_connection' => $request->db_connection,
+            'site_name' => $request->site_name,
             'db_host' => $request->db_host,
             'db_port' => $request->db_port,
             'db_database' => $request->db_database,
@@ -52,6 +52,15 @@ class AddNewSite extends Controller
             
         ]);
         
-        return redirect()->route('overview');
+        return redirect()->route('sites');
+    }
+
+    public function deleteSite($id)
+    {
+        $site = Site::find($id);
+
+        $site->delete();
+
+        return redirect()->route('sites')->with('status','Site Removed successfully!');;
     }
 }

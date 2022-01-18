@@ -113,8 +113,11 @@
 
         <li>
             <a href="/notifications" id="overview">
-                <div class="dropdownlink">
+                <div class="dropdownlink position-relative">
                     <b><i class="fas fa-bell"></i> Notifications</b>
+                    @if ($total !=0)
+                        <span class="badge badge-danger m-1 position-absolute" style="font-size: 10px;font-weight: normal;border-radius:20px">@if ($total<100) {{$total}} @else +99 @endif</span>
+                    @endif
                 </div>
             </a>
         </li>

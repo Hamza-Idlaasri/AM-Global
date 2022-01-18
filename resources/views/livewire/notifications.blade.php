@@ -2,10 +2,27 @@
 <div>
     
     <div class="container d-flex justify-content-around w-50 my-3">
-        <button class="btn btn-primary font-weight-bold shadow-none" id="Hs">Hosts</button>
-        <button class="btn btn-light font-weight-bold shadow-none" id="Ss">Services</button>
-        <button class="btn btn-light font-weight-bold shadow-none" id="Bs">Boxs</button>
-        <button class="btn btn-light font-weight-bold shadow-none" id="Es">Equipements</button>
+        <button wire:click="checked('hosts')" class="btn btn-primary font-weight-bold shadow-none position-relative" id="Hs">Hosts 
+            @if ($total_hosts != 0)
+                <span class="position-absolute badge badge-danger" style="top: -.6rem;font-size: 10px;font-weight: normal;border-radius:20px">@if ($total_hosts<100) {{$total_hosts}} @else +99 @endif</span>
+            @endif
+        </button>
+        <button class="btn btn-light font-weight-bold shadow-none position-relative" id="Ss">Services 
+            @if ($total_services != 0)
+                <span class="position-absolute badge badge-danger" style="top: -.6rem;font-size: 10px;font-weight: normal;border-radius:20px">@if ($total_services<100) {{$total_services}} @else +99 @endif</span>
+            @endif 
+        </button>
+        <button class="btn btn-light font-weight-bold shadow-none position-relative" id="Bs">Boxs 
+            @if ($total_boxs != 0)
+                <span class="position-absolute badge badge-danger" style="top: -.6rem;font-size: 10px;font-weight: normal;border-radius:20px">@if ($total_boxs<100) {{$total_boxs}} @else +99 @endif</span>
+            @endif
+        </button>
+        <button class="btn btn-light font-weight-bold shadow-none position-relative" id="Es">Equipements 
+            @if ($total_equips != 0)
+                <span class="position-absolute badge badge-danger" style="top: -.6rem;font-size: 10px;font-weight: normal;border-radius:20px">@if ($total_equips<100) {{$total_equips}} @else +99 @endif</span>
+            @endif
+        </button>
+            
     </div>
     
     {{-- Hosts --}}
@@ -398,6 +415,7 @@
         Es.classList.remove("btn-primary");
         Es.classList.add("btn-light");
 
+        Hs.firstElementChild.style.display = 'none';
     }
 
     Ss.onclick = () =>  {
@@ -419,6 +437,7 @@
         Es.classList.remove("btn-primary");
         Es.classList.add("btn-light");
 
+        Ss.firstElementChild.style.display = 'none';
     }
 
     Bs.onclick = () =>  {
@@ -439,6 +458,9 @@
         
         Es.classList.remove("btn-primary");
         Es.classList.add("btn-light");
+
+        Bs.firstElementChild.style.display = 'none';
+
     }
 
     Es.onclick = () => {
@@ -459,6 +481,8 @@
         
         Hs.classList.remove("btn-primary");
         Hs.classList.add("btn-light");
+
+        Es.firstElementChild.style.display = 'none';
 
     }
 

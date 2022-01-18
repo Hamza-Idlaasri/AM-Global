@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Site extends Model
+class Notif extends Model
 {
     use HasFactory;
 
-    protected $table = 'sites';
+    protected $table = 'notifs';
 
     protected $connection = 'users';
 
     protected $fillable = [
-        'db_host',
-        'db_port',
-        'db_database',
-        'db_username',
-        'db_password',
-        'site_name',
+        'user_id',
+        'hosts',
+        'boxs',
+        'services',
+        'equips',
     ];
 }

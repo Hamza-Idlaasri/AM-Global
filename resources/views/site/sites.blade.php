@@ -12,8 +12,18 @@
 </head>
 <body>
     
-<div class="container p-4">
+<div class="container p-4 w-50">
         
+    <div class="container my-3">
+        <div class="container w-50">
+            @if (session('status'))
+                <div class="alert alert-success text-center">
+                    {{ session('status') }}
+                </div>
+            @endif
+        </div>
+    </div>
+
     <div class="card">
         <div class="card-header h2">
             Sites
@@ -21,8 +31,8 @@
             <a href="{{route('addSite')}}" class="btn btn-light text-primary float-right"><i class="fas fa-plus"></i></a>
         </div>
 
-        <div class="card-body p-4 d-flex flex-wrap justify-content-center">
-            @foreach ($sites as $site)
+        <div class="card-body p-4">
+            @forelse ($sites as $site)
     
             @if (!$site->db_password)
                 @php
@@ -30,13 +40,31 @@
                 @endphp
             @endif
 
-                <a href="{{ route('switchDB', [$site->db_host,$site->db_port,$site->db_database,$site->db_username,$site->db_password]) }}" class="btn btn-primary w-25 p-4 shadow m-3">
-                    <h3>{{ $site->db_database }}</h3>
-                </a>
-            @endforeach
+            <ul class="list-group">
+                
+                <li class="list-group-item d-flex justify-content-center align-items-center">
+
+                    <div class="w-75">
+
+                        <a href="{{ route('switchDB', [$site->id,$site->db_host,$site->db_port,$site->db_database,$site->db_username,$site->db_password]) }}" >
+                            <h4><i class="fas fa-map-marker-alt mr-2"></i> {{ $site->site_name }}</h4>
+                        </a>
+                    </div>
+                        
+                    <div class="w-25">
+
+                        <form action="{{ route('delete-site', [$site->id]) }}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-light text-danger float-right" style="opacity: 0.5" onMouseOut="this.style.opacity='.5'" onMouseOver="this.style.opacity='1'" ><i class="far fa-trash-alt"></i></button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+            @empty
+                <p class=""><i>No sites found</i></p>
+            @endforelse
         </div>
     </div>
-       
 
 
 </div>

@@ -131,9 +131,10 @@ Route::get('/carte/automap', App\Http\Livewire\Carte\Automap::class)->middleware
 
 /********** Sites **********************************************************/
 
-Route::get('/sites', [App\Http\Controllers\Site\AddNewSite::class,'sites']);
+Route::get('/sites', [App\Http\Controllers\Site\AddNewSite::class,'sites'])->name('sites');
 Route::get('/add-site', [App\Http\Controllers\Site\AddNewSite::class,'newSite']);
 Route::post('/add-site', [App\Http\Controllers\Site\AddNewSite::class,'addSite'])->name('addSite');
-Route::get('/switch-db/{db_host}/{db_port}/{db_database}/{db_username}/{db_password}', [App\Http\Controllers\Site\SwitchDB::class,'switchDB'])->name('switchDB');
+Route::get('/switch-db/{id}/{db_host}/{db_port}/{db_database}/{db_username}/{db_password}', [App\Http\Controllers\Site\SwitchDB::class,'switchDB'])->name('switchDB');
+Route::post('/delete-site/{id}', [App\Http\Controllers\Site\AddNewSite::class,'deleteSite'])->name('delete-site');
 
 /************************************************************************* */

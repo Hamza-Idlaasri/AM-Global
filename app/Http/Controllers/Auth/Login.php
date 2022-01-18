@@ -32,6 +32,6 @@ class Login extends Controller
             return back()->with('status','Invalid login details');
         };
 
-        return redirect()->route('overview'); 
+        return redirect()->route('sites'); 
     }
 }

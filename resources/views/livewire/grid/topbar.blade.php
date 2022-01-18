@@ -5,12 +5,18 @@
         <img src="{{ asset('images/AlarmManager.png') }}" alt="">
     </div>
 
-    <div id="summary" wire:poll.5000ms>
+    <div id="summary" class="d-flex justify-content-center align-items-center" wire:poll.5000ms>
+
+        <div>
+            <h6  colspan="3" class="text-primary font-weight-bold m-3">{{ucfirst($site_name)}}</h6>
+        </div>
+
+        <div>
 
         <table>
 
             <tr>
-                
+    
                 <!-- Username -->
     
                 <td colspan="3" class="text-primary font-weight-bold">{{ auth()->user()->name }}</td>
@@ -150,7 +156,7 @@
     
             </tr>
         </table>
-
+    </div>
     </div>
 
     {{-- <div class="clearfix"></div> --}}

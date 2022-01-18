@@ -39,14 +39,14 @@
                 
                 @csrf
 
-                {{-- <div class="form-group">
-                    <input type="text" name="db_connection" class="form-control @error('db_connection') border-danger @enderror" placeholder="Connection" pattern="[a-zA-Z][a-zA-Z0-9-_(). ÀÂÇÉÈÊÎÔÛÙàâçéèêôûù]{3,15}" title="Connection must be between 3 & 15 charcarters in length and containes only letters, numbers, and these symbols -_()">
-                    @error('db_connection')
+                <div class="form-group">
+                    <input type="text" name="site_name" class="form-control @error('site_name') border-danger @enderror" placeholder="Site Name" pattern="[a-zA-Z][a-zA-Z0-9-_(). ÀÂÇÉÈÊÎÔÛÙàâçéèêôûù]{3,15}" title="Connection must be between 3 & 15 charcarters in length and containes only letters, numbers, and these symbols -_()">
+                    @error('site_name')
                         <div class="text-danger">
                                 {{ $message }}
                         </div>
                     @enderror
-                </div> --}}
+                </div>
 
                 <div class="form-group">
                     <input type="text" name="db_host" class="form-control @error('db_host') border-danger @enderror" placeholder="Host" pattern="[a-zA-Z0-9-_(). ÀÂÇÉÈÊÎÔÛÙàâçéèêôûù]{3,15}" title="Host must be between 3 & 15 charcarters in length and containes only letters, numbers, and these symbols -_()">

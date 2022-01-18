@@ -4,11 +4,18 @@ namespace App\Http\Livewire\Grid;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
+use App\Models\Site;
 
 class Topbar extends Component
 {
     public function render()
     {
+        $sites = Site::all();
+
+        $site_name = $sites->find(env('SITE_ID'));
+
+        $site_name = $site_name->site_name;
+
         $hosts_summary = DB::table('nagios_hoststatus')
             ->join('nagios_hosts','nagios_hoststatus.host_object_id','=','nagios_hosts.host_object_id')
             ->get();
@@ -163,7 +170,7 @@ class Topbar extends Component
 
             }
 
-        return view('livewire.grid.topbar', compact('total_hosts','total_boxs','total_services','total_equipements','hosts_up','hosts_down','hosts_unreachable','boxs_up','boxs_down','boxs_unreachable','services_ok','services_warning','services_critical','services_unknown','equipements_ok','equipements_warning','equipements_critical','equipements_unknown'));
+        return view('livewire.grid.topbar', compact('total_hosts','total_boxs','total_services','total_equipements','hosts_up','hosts_down','hosts_unreachable','boxs_up','boxs_down','boxs_unreachable','services_ok','services_warning','services_critical','services_unknown','equipements_ok','equipements_warning','equipements_critical','equipements_unknown','site_name'));
 
     }
 }
